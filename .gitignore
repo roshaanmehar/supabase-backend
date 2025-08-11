@@ -1,7 +1,201 @@
-\__pycache__
-/__pycache__
-/venv
-\venvg
+# --- OS-specific files ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+# --- IDEs and Editors ---
+# VS Code
+.vscode/
+.history/
+
+# JetBrains (IntelliJ, PyCharm, etc.)
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+.metadata/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- Programming Languages and Build Tools ---
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+dist/
+coverage/
 .env
-.env.local
-.env.example
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pyp
+*.pyw
+*.egg
+*.egg-info/
+.eggs/
+.Python
+.env
+.venv/
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+hs_err_pid*
+replay_pid*
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# .NET / C#
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userprefs
+*.csproj.user
+*.dbmdl
+*.pdb
+
+# Rust
+/target/
+**/*.rs.bk
+
+# Go
+/bin/
+/pkg/
+*.exe
+
+# Ruby
+*.gem
+*.rbc
+.bundle/
+vendor/bundle
+log/
+tmp/
+
+# PHP
+/vendor/
+
+# --- Logs and Temporary Files ---
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# --- Docker ---
+*.pid
+*.seed
+docker-compose.override.yml
+docker-compose.local.yml
+
+# --- Git ---
+*.orig
+*.rej
+*.patch
+*.diff
+*.sublime-workspace
+*.sublime-project
+*.tgz
+*.tar.gz
+*.zip
+*.gz
+
+# --- Archives and Backups ---
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.bak
+*.tmp
+
+# --- Database ---
+*.sqlite3
+*.sqlite
+*.db
+*.db3
+*.sql
+*.log
+
+# --- Testing ---
+.nyc_output/
+coverage/
+test-results/
+test-output/
+
+# --- Others ---
+*.pid
+*.seed
+*.pid.lock
+*.coveragerc
+.cache/
+.cache-loader/
+.parcel-cache/
+.next/
+.nuxt/
+out/
+.sass-cache/
+stylelintcache
+
+# Yarn / pnpm
+.yarn/
+.pnp.*
+.pnpm-debug.log
