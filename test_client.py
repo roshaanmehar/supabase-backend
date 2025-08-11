@@ -1,22 +1,27 @@
 import requests
 import json
 import time
+import uuid
 from datetime import datetime
 
 # Configuration
 BASE_URL = "http://localhost:5000"
 
 def test_job_submission():
-    """Test submitting a job to the Redis server"""
+    """Test submitting a job to the Redis server with proper UUIDs"""
     
-    # Sample job data (similar to what edge function would send)
+    # Generate proper UUIDs
+    job_id = str(uuid.uuid4())
+    profile_id = str(uuid.uuid4())  # This should be a real profile_id from your database
+    
+    # Sample job data with proper UUIDs
     job_data = {
-        "job_id": "550e8400-e29b-41d4-a716-446655440001",
-        "profile_id": "550e8400-e29b-41d4-a716-446655440000",
+        "job_id": job_id,
+        "profile_id": profile_id,  # Real profile UUID
         "scraper_engine": "google_maps",
         "job_parts": [
             {
-                "part_id": "550e8400-e29b-41d4-a716-446655440002",
+                "part_id": str(uuid.uuid4()),  # Real part UUID
                 "postcode": "10001",
                 "keyword": "restaurants",
                 "city": "New York",
@@ -24,7 +29,7 @@ def test_job_submission():
                 "country": "USA"
             },
             {
-                "part_id": "550e8400-e29b-41d4-a716-446655440003",
+                "part_id": str(uuid.uuid4()),  # Real part UUID
                 "postcode": "10002",
                 "keyword": "restaurants",
                 "city": "New York",
@@ -32,7 +37,7 @@ def test_job_submission():
                 "country": "USA"
             },
             {
-                "part_id": "550e8400-e29b-41d4-a716-446655440004",
+                "part_id": str(uuid.uuid4()),  # Real part UUID
                 "postcode": "10003",
                 "keyword": "restaurants",
                 "city": "New York",
@@ -43,7 +48,9 @@ def test_job_submission():
         "created_at": datetime.now().isoformat()
     }
     
-    print("Testing job submission...")
+    print("Testing job submission with proper UUIDs...")
+    print(f"Job ID: {job_id}")
+    print(f"Profile ID: {profile_id}")
     response = requests.post(f"{BASE_URL}/api/jobs/submit", json=job_data)
     print(f"Response: {response.status_code} - {response.json()}")
     

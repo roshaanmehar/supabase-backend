@@ -4,7 +4,7 @@ import logging
 from typing import Dict, List
 from redis_manager import redis_manager
 from database import db
-from scrapers import get_scraper
+from legacy_scrapers import get_scraper
 from config import MAX_RETRIES, RETRY_DELAYS, GOOGLE_MAPS_QUEUE_NAME, EMAIL_QUEUE_NAME
 
 logger = logging.getLogger(__name__)
@@ -53,9 +53,10 @@ class JobWorker:
         self.current_job = job_part
         part_id = job_part['part_data']['part_id']
         job_id = job_part['job_id']
+        profile_id = job_part['profile_id']  # Get the actual profile_id
         scraper_engine = job_part['scraper_engine']
         
-        logger.info(f"Worker {self.worker_id} processing part {part_id}")
+        logger.info(f"Worker {self.worker_id} processing part {part_id} for job {job_id} (profile: {profile_id})")
         
         try:
             # Update part status to ongoing
@@ -64,8 +65,13 @@ class JobWorker:
             # Get the appropriate scraper
             scraper = get_scraper(scraper_engine)
             
+            # Add the job metadata to part_data so scraper can access it
+            enriched_part_data = job_part['part_data'].copy()
+            enriched_part_data['job_id'] = job_id
+            enriched_part_data['profile_id'] = profile_id  # Pass the real profile_id
+            
             # Perform the scraping
-            result = scraper.scrape(job_part['part_data'])
+            result = scraper.scrape(enriched_part_data)
             
             # Mark as completed
             db.update_job_part_status(part_id, 'done')
